@@ -1,0 +1,85 @@
+<!doctype html>
+
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html ng-app="buildingTasks">
+<head>
+	<!-- META -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+
+	<title>Building tasks</title>
+
+	<!-- SCROLLS -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+	<style>
+		html 					{ overflow-y:scroll; }
+		body 					{ padding-top:50px; }
+		#task-list 				{ margin-bottom:30px; }
+		#task-form 	 			{ margin-bottom:50px; }
+	</style>
+
+	<!-- SPELLS -->
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script><!-- load angular -->
+
+	<script src="js/controllers/main.js"></script> <!-- load up controller -->
+	<script src="js/services/tasks.js"></script> <!-- load task service -->
+	<script src="js/core.js"></script> <!-- load main application -->
+
+</head>
+<!-- SET THE CONTROLLER -->
+<body ng-controller="mainController"
+	  style="background-color:#00c3b1;" >
+	  
+	<div class="container">
+
+		<!-- HEADER AND TASK COUNT -->
+		<div class="jumbotron text-center">
+			<h1>Node.JS API on Azure <span class="label label-info"></span></h1>
+			<h2><font color = "#213b55"># of building tasks on the list: {{ todos.length }}</font></h2>
+		</div>
+
+		<!-- TASK LIST -->
+		<div id="task-list" class="row">
+			<div class="col-sm-4 col-sm-offset-4">
+
+				
+
+				<!-- LOOP OVER THE TASKS IN $scope.tasks -->
+				<div class="checkbox" ng-repeat="task in tasks">
+					<label>
+						<input type="checkbox" ng-click="deleteTask(task._id)"> <h2><font color = "lightgreen">{{ task.text }}</font></h2>
+					</label>
+				</div>
+
+				<p class="text-center" ng-show="loading">
+					<span class="fa fa-spinner fa-spin fa-3x"></span>
+				</p>
+
+			</div>
+		</div>
+
+		<!-- FORM TO CREATE TODOS -->
+		<div id="task-form" class="row">
+			<div class="col-sm-8 col-sm-offset-2 text-center">
+				<form>
+					<div class="form-group">
+
+						<!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+						<input type="text" class="form-control input-lg text-center" placeholder="Enter a new building task here" ng-model="formData.text">
+					</div>
+
+					<!-- createToDo() WILL CREATE NEW TODOS -->
+					<button type="submit" class="btn btn-primary btn-lg" ng-click="createTask()">Add Task</button>
+				</form>
+			</div>
+		</div>
+
+		<div class="text-center text-muted">
+			<p><font color = "#1a1a1a">A prototype by <a href="mailto:flavioivan@gmail.com" style="columns: #9ad7f7;" >Flávio Ivan</a>.</font></p>
+		</div>
+
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "name": "node-tasks",
+  "version": "0.0.1",
+  "description": "Simple building tasks application.",
+  "main": "server.js",
+  "author": "Flavio",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.17.1",
+    "method-override": "^2.3.10",
+    "mongoose": "^5.11.14",
+    "morgan": "^1.9.0"
+  }
+}
